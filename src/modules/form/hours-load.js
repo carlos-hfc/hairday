@@ -1,10 +1,13 @@
 import dayjs from "dayjs"
 
 import { openingHous } from "../../utils/opening-hours"
+import { hoursClick } from "./hours-click"
 
 const hours = document.getElementById("hours")
 
 export function hoursLoad({ date }) {
+  hours.replaceChildren()
+  
   const opening = openingHous.map(hour => {
     const [scheduleHour] = hour.split(":")
 
@@ -36,6 +39,8 @@ export function hoursLoad({ date }) {
 
     hours.append(li)
   })
+
+  hoursClick()
 }
 
 function addHourHeader(title, period) {
